@@ -36,9 +36,9 @@ sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package
 # Add luci-app-amlogic
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 # Add luci-app-openclash
-git clone https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-openclash.git package/lean/luci-app-openclash
+git clone https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-openclash package/lean/luci-app-openclash
 #Add luci-app-passwall
-git clone https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-passwall.git package/lean/luci-app-passwall
+git clone https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-passwall package/lean/luci-app-passwall
 # Add p7zip
 # svn co https://github.com/hubutui/p7zip-lede/trunk package/p7zip
 
