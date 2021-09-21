@@ -65,7 +65,7 @@ env:
 
   RECENT_LASTEST: 3
 
-  TZ: Asia/Shanghai
+  TZ: Asia/Jakarta
 
 jobs:
 
@@ -269,7 +269,7 @@ jobs:
 
         sudo chmod +x make
 
-        sudo ./make -b s905x -k 5.4.145
+        sudo ./make -d -b s905x -k 5.4.145
 
         [ -d ipk ] || mkdir -p ipk
 
