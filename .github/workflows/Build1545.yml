@@ -268,7 +268,7 @@ jobs:
 
         sudo chmod +x make
 
-        sudo ./make -d -b s905x -k 5.4.145
+        sudo ./make -b s905x -k 5.4.145
 
         [ -d ipk ] || mkdir -p ipk
 
