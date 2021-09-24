@@ -36,8 +36,15 @@ sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package
 # Add luci-app-amlogic
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 
+# Add luci-app-passwall
+svn co https://github.com/xiaorouji/openwrt-passwall/trunk package/openwrt-passwall
+
 # Add luci-app-openclash
-git clone https://github.com/vernesong/OpenClash.git
+svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openwrt-openclash
+pushd package/openwrt-openclash/tools/po2lmo && make && sudo make install 2>/dev/null && popd
+
+# Add luci-app-openclash
+#git clone https://github.com/vernesong/OpenClash.git
 
 #Add luci-app-passwall
 #git clone https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-passwall package/lean/luci-app-passwall
