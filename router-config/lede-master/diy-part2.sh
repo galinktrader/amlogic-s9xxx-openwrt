@@ -53,6 +53,9 @@ pushd package/openwrt-openclash/tools/po2lmo && make && sudo make install 2>/dev
 #Add luci-app-passwall
 #git clone https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-passwall package/lean/luci-app-passwall
 
+#add modemInfo
+svn co https://github.com/koshev-msk/luci-app-modeminfo/trunk package/luci-app-modeminfo
+
 # Add p7zip
 # svn co https://github.com/hubutui/p7zip-lede/trunk package/p7zip
 
