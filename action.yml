@@ -21,7 +21,7 @@ inputs:
   amlogic_size:
     description: 'Choose root size.'
     required: false
-    default: '1024'
+    default: '2048'
   armvirt64_path:
     description: 'Choose armvirt path.'
     required: false
