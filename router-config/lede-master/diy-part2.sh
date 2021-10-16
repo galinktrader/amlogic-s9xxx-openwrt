@@ -47,7 +47,7 @@ rm -rf package/openwrt-ssrplus/luci-app-ssr-plus/po/zh_Hans 2>/dev/null
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openwrt-openclash
 pushd package/openwrt-openclash/tools/po2lmo && make && sudo make install 2>/dev/null && popd
 
-git clone https://github.com/kenzok8/openwrt-packages.git package/openwrt-packages
+#git clone https://github.com/kenzok8/openwrt-packages.git package/openwrt-packages
 
 #add modemInfo
 svn co https://github.com/koshev-msk/luci-app-modeminfo/trunk package/luci-app-modeminfo
