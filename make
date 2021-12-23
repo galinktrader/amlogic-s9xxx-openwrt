@@ -27,7 +27,7 @@ auto_kernel="true"
 
 # Set firmware size ( BOOT_MB size >= 128, ROOT_MB size >= 512 )
 BOOT_MB=256
-ROOT_MB=960
+ROOT_MB=3584
 
 tag() {
     echo -e " [ \033[1;32m ${1} \033[0m ]"
@@ -610,7 +610,7 @@ Options:
       , -k all             Build all the kernel version
       , -k latest          Build the latest kernel version
       , -k 5.4.160         Specify a single kernel for compilation
-      , -k 5.4.160_5.10.80 Specify multiple cores, use "_" to connect
+      , -5.15.10_5.4.160   Specify multiple cores, use "_" to connect
 
     -a, --autokernel       Whether to auto update to the latest kernel of the same series
       , -a true            Auto update to the latest kernel
