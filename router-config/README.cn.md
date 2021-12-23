@@ -8,43 +8,51 @@ Github Actions 是 Microsoft 推出的一项服务，它提供了性能配置非
 
 # 目录
 
-1. [注册自己的 Github 的账户](#1-注册自己的-github-的账户)
-2. [设置隐私变量 GITHUB_TOKEN](#2-设置隐私变量-github_token)
-3. [Fork 仓库并设置 RELEASES_TOKEN](#3-fork-仓库并设置-releases_token)
-4. [个性化 OpenWrt 固件定制文件说明](#4-个性化-openwrt-固件定制文件说明)
-    - 4.1 [.config 文件说明](#41-config-文件说明)
-        - 4.1.1 [首先让固件支持本国语言](#411-首先让固件支持本国语言)
-        - 4.1.2 [选择个性化软件包](#412-选择个性化软件包)
-    - 4.2 [DIY脚本操作: diy-part1.sh 和 diy-part2.sh](#42-diy脚本操作-diy-part1sh-和-diy-part2sh)
-        - 4.2.1 [举例1，添加第三方软件包](#举例1添加第三方软件包)
-        - 4.2.2 [举例2，用第三方软件包替换当前源码库中的已有的同名软件包](#举例2用第三方软件包替换当前源码库中的已有的同名软件包)
-        - 4.2.3 [举例3，通过修改源码库中的代码来实现某些需求](#举例3通过修改源码库中的代码来实现某些需求)
-5. [编译固件](#5-编译固件)
-    - 5.1 [手动编译](#51-手动编译)
-    - 5.2 [定时编译](#52-定时编译)
-6. [保存固件](#6-保存固件)
-    - 6.1 [保存到 Github Actions](#61-保存到-github-actions)
-    - 6.2 [保存到 GitHub Releases](#62-保存到-github-releases)
-    - 6.3 [保存到第三方](#63-保存到第三方)
-7. [下载固件](#7-下载固件)
-    - 7.1 [从 Github Actions 下载](#71-从-github-actions-下载)
-    - 7.2 [从 Github Releases 下载](#72-从-github-releases-下载)
-    - 7.3 [从第三方下载](#73-从第三方下载)
-8. [安装固件](#8-安装固件)
-9. [升级固件](#9-升级固件)
-10. [个性化固件定制晋级教程](#10-个性化固件定制晋级教程)
-    - 10.1 [认识完整的 .config 文件](#101-认识完整的-config-文件)
-    - 10.2 [认识 workflow 文件](#102-认识-workflow-文件)
-        - 10.2.1 [更换编译源码库的地址和分支](#1021-更换编译源码库的地址和分支)
-        - 10.2.2 [更改盒子的型号和内核版本号](#1022-更改盒子的型号和内核版本号)
-    - 10.3 [自定义 banner 信息](#103-自定义-banner-信息)
-    - 10.4 [自定义 feeds 配置文件](#104-自定义-feeds-配置文件)
-    - 10.5 [自定义软件默认配置信息](#105-自定义软件默认配置信息)
-    - 10.6 [Opkg 软件包管理](#106-opkg-软件包管理)
-    - 10.7 [使用 Web 界面管理软件包](#107-使用-Web-界面管理软件包)
-    - 10.8 [如果安装失败并且无法启动时如何救砖](#108-如果安装失败并且无法启动时如何救砖)
-    - 10.9 [在安装了主线 u-boot 后无法启动](#109-在安装了主线-u-boot-后无法启动)
-    - 10.10 [设置 Amlogic S9xxx 系列机顶盒从 USB 中启动](#1010-设置-amlogic-s9xxx-系列机顶盒从-usb-中启动)
+- [使用 GitHub Actions 云编译 OpenWrt](#使用-github-actions-云编译-openwrt)
+- [目录](#目录)
+  - [1. 注册自己的 Github 的账户](#1-注册自己的-github-的账户)
+  - [2. 设置隐私变量 GITHUB_TOKEN](#2-设置隐私变量-github_token)
+  - [3. Fork 仓库并设置 RELEASES_TOKEN](#3-fork-仓库并设置-releases_token)
+  - [4. 个性化 OpenWrt 固件定制文件说明](#4-个性化-openwrt-固件定制文件说明)
+    - [4.1 .config 文件说明](#41-config-文件说明)
+      - [4.1.1 首先让固件支持本国语言](#411-首先让固件支持本国语言)
+      - [4.1.2 选择个性化软件包](#412-选择个性化软件包)
+    - [4.2 DIY脚本操作: diy-part1.sh 和 diy-part2.sh](#42-diy脚本操作-diy-part1sh-和-diy-part2sh)
+      - [举例1，添加第三方软件包](#举例1添加第三方软件包)
+      - [举例2，用第三方软件包替换当前源码库中的已有的同名软件包](#举例2用第三方软件包替换当前源码库中的已有的同名软件包)
+      - [举例3，通过修改源码库中的代码来实现某些需求](#举例3通过修改源码库中的代码来实现某些需求)
+  - [5. 编译固件](#5-编译固件)
+    - [5.1 手动编译](#51-手动编译)
+    - [5.2 定时编译](#52-定时编译)
+  - [6. 保存固件](#6-保存固件)
+    - [6.1 保存到 Github Actions](#61-保存到-github-actions)
+    - [6.2 保存到 GitHub Releases](#62-保存到-github-releases)
+    - [6.3 保存到第三方](#63-保存到第三方)
+  - [7. 下载固件](#7-下载固件)
+    - [7.1 从 Github Actions 下载](#71-从-github-actions-下载)
+    - [7.2 从 Github Releases 下载](#72-从-github-releases-下载)
+    - [7.3 从第三方下载](#73-从第三方下载)
+  - [8. 安装固件](#8-安装固件)
+    - [8.1 在编译时集成 luci-app-amlogic 操作面板](#81-在编译时集成-luci-app-amlogic-操作面板)
+    - [8.2 使用操作面板安装](#82-使用操作面板安装)
+    - [8.3 使用脚本命令安装](#83-使用脚本命令安装)
+  - [9. 升级固件](#9-升级固件)
+    - [9.1 使用操作面板安装](#91-使用操作面板安装)
+    - [9.2 使用升级固件脚本命令安装](#92-使用升级固件脚本命令安装)
+    - [9.3 通过升级 OpenWrt 内核进行升级](#93-通过升级-openwrt-内核进行升级)
+  - [10. 个性化固件定制晋级教程](#10-个性化固件定制晋级教程)
+    - [10.1 认识完整的 .config 文件](#101-认识完整的-config-文件)
+    - [10.2 认识 workflow 文件](#102-认识-workflow-文件)
+      - [10.2.1 更换编译源码库的地址和分支](#1021-更换编译源码库的地址和分支)
+      - [10.2.2 更改盒子的型号和内核版本号](#1022-更改盒子的型号和内核版本号)
+    - [10.3 自定义 banner 信息](#103-自定义-banner-信息)
+    - [10.4 自定义 feeds 配置文件](#104-自定义-feeds-配置文件)
+    - [10.5 自定义软件默认配置信息](#105-自定义软件默认配置信息)
+    - [10.6 Opkg 软件包管理](#106-opkg-软件包管理)
+    - [10.7 使用 Web 界面管理软件包](#107-使用-web-界面管理软件包)
+    - [10.8 如果安装失败并且无法启动时如何救砖](#108-如果安装失败并且无法启动时如何救砖)
+    - [10.9 在安装了主线 u-boot 后无法启动](#109-在安装了主线-u-boot-后无法启动)
+    - [10.10 设置 Amlogic S9xxx 系列机顶盒从 USB 中启动](#1010-设置-amlogic-s9xxx-系列机顶盒从-usb-中启动)
 
 ## 1. 注册自己的 Github 的账户
 
@@ -215,7 +223,7 @@ schedule:
     allowUpdates: true
     token: ${{ secrets.GITHUB_TOKEN }}
     body: |
-      This is OpenWrt firmware for Amlogic S9xxx STB
+      This is OpenWrt firmware for Amlogic s9xxx tv box
       * Firmware information
       Default IP: 192.168.1.1
       Default username: root
@@ -301,7 +309,7 @@ openwrt-install-amlogic
 
 ### 9.1 使用操作面板安装
 
-从浏览器访问 openwrt 系统，在 `系统` 菜单下，选择 `晶晨宝盒`，选择 `升级 OpenWrt 固件` 功能进行升级。（你可以从高版本如 5.10.70 升级到低版本如 5.4.150 ，也可以从低版本如 5.4.150 升级到高版本如 5.10.70 。内核版本号的高低不影响升级，可自由升级/降级）。
+从浏览器访问 openwrt 系统，在 `系统` 菜单下，选择 `晶晨宝盒`，选择 `升级 OpenWrt 固件` 功能进行升级。（你可以从高版本如 5.15.10 升级到低版本如 5.4.160 ，也可以从低版本如 5.4.160 升级到高版本如 5.15.10 。内核版本号的高低不影响升级，可自由升级/降级）。
 
 ### 9.2 使用升级固件脚本命令安装
 
@@ -313,7 +321,7 @@ openwrt-update-amlogic
 
 💡提示: 脚本 `openwrt-update-amlogic` 会自动从 `/mnt/mmcblk*p4/` 目录中寻找各种后缀的升级文件，你可以通过晶晨宝盒插件或其他软件将升级固件手动上传至 `/mnt/mmcblk*p4/` 目录下。
 
-如果在 `/mnt/mmcblk*p4/` 目录下仅有一个符合要求的升级文件时，你可以直接运行升级命令 `openwrt-update-amlogic` 进行升级，无需输入固件名称的参数。如果目录中有多个符合要求的可用于升级 OpenWrt 的文件时，请在 `openwrt-update-amlogic` 命令后面空格，并输入 `你指定使用的升级固件`（如 `openwrt-update-amlogic openwrt_s905x3_v5.4.150_2021.03.17.0412.img.gz` ）。
+如果在 `/mnt/mmcblk*p4/` 目录下仅有一个符合要求的升级文件时，你可以直接运行升级命令 `openwrt-update-amlogic` 进行升级，无需输入固件名称的参数。如果目录中有多个符合要求的可用于升级 OpenWrt 的文件时，请在 `openwrt-update-amlogic` 命令后面空格，并输入 `你指定使用的升级固件`（如 `openwrt-update-amlogic openwrt_s905x3_v5.4.160_2021.03.17.0412.img.gz` ）。
 
 - 脚本  `openwrt-update-amlogic` 在目录中的查找顺序说明
 
@@ -378,13 +386,13 @@ REPO_BRANCH: openwrt-19.07
         sudo rm -rf openwrt && sync
         sudo rm -rf /workdir && sync
         sudo chmod +x make
-        sudo ./make -d -b s905x3_s905x2_s905x_s905d_s922x_s912 -k 5.10.70_5.4.150
+        sudo ./make -d -b s905x3_s905x2_s905x_s905d_s922x_s912 -k 5.15.10_5.4.160
         cd out/ && sudo gzip *.img
         cp -f ../openwrt-armvirt/*.tar.gz . && sync
         echo "FILEPATH=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
 ```
-修改 `-d` 后面的参数为你的机顶盒的型号。修改 `-k` 的参数为你选择的内核版本号，如: `sudo ./make -d -b s905x -k 5.4.150` 可以指定的参数及更多使用方法详见: [打包命令的相关参数说明](https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/README.cn.md#打包命令的相关参数说明)
+修改 `-d` 后面的参数为你的机顶盒的型号。修改 `-k` 的参数为你选择的内核版本号，如: `sudo ./make -d -b s905x -k 5.4.160` 可以指定的参数及更多使用方法详见: [打包命令的相关参数说明](https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/README.cn.md#打包命令的相关参数说明)
 
 ### 10.3 自定义 banner 信息
 
