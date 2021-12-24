@@ -33,8 +33,8 @@ svn co https://github.com/ophub/luci-app-amlogic/trunk package/luci-app-amlogic
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk package/openwrt-passwall
 
 # Add Luci SSRplus
-svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/openwrt-ssrplus
-rm -rf package/openwrt-ssrplus/luci-app-ssr-plus/po/zh_Hans 2>/dev/null
+#svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/openwrt-ssrplus
+#rm -rf package/openwrt-ssrplus/luci-app-ssr-plus/po/zh_Hans 2>/dev/null
 
 # Add luci-app-openclash
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openwrt-openclash
