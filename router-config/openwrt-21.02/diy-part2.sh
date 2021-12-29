@@ -30,7 +30,7 @@ echo "DISTRIB_SOURCECODE='openwrt'" >>package/base-files/files/etc/openwrt_relea
 svn co https://github.com/ophub/luci-app-amlogic/trunk package/luci-app-amlogic
 
 # Add luci-app-passwall
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk package/openwrt-passwall
+# svn co https://github.com/xiaorouji/openwrt-passwall/trunk package/openwrt-passwall
 
 # Add Luci SSRplus
 #svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/openwrt-ssrplus
