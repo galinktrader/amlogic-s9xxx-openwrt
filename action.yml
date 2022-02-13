@@ -9,11 +9,11 @@ inputs:
   amlogic_openwrt:
     description: 'Choose Amlogic SoC.'
     required: false
-    default: 's905d_s905x3'
+    default: 's905d_s905x'
   amlogic_kernel:
     description: 'Choose kernel.'
     required: false
-    default: '5.4.160_5.15.10'
+    default: '5.10.100_5.4.179'
   auto_kernel:
     description: 'Auto use the latest kernel.'
     required: false
@@ -21,7 +21,7 @@ inputs:
   amlogic_size:
     description: 'Choose root size.'
     required: false
-    default: '2048'
+    default: '4096'
   armvirt64_path:
     description: 'Choose armvirt path.'
     required: false
