@@ -33,9 +33,14 @@ echo "DISTRIB_SOURCECODE='lede'" >>package/base-files/files/etc/openwrt_release
 #
 # Add luci-app-amlogic
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
+# add passwall
+svn co https://github.com/xiaorouji/openwrt-passwall/trunk package/openwrt-passwall
 # add openclash
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openwrt-openclash 
 pushd package/openwrt-openclash/tools/po2lmo && make && sudo make install 2>/dev/null && popd
+# add ssr plus
+svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/openwrt-ssrplus
+rm -rf package/openwrt-ssrplus/luci-app-ssr-plus/po/zh_Hans 2>/dev/null
 # Add p7zip
 svn co https://github.com/hubutui/p7zip-lede/trunk package/p7zip
 
